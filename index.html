@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>document</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <p>hi this iS from HTML</p>
+    <div id="root" data="text"></div>
+    <div id="root1">
+      <header></header>
+      <section>
+        <div>
+          <h1></h1>
+          <p></p>
+        </div>
+      </section>
+    </div>
+    <script>
+      const heading1 = document.createElement("h2");
+      heading1.innerHTML = "Hello from javascript";
+
+      const root1 = document.getElementById("root1");
+      root1.appendChild(heading1);
+    </script>
+
+    <script
+      crossorigin
+      src="https://unpkg.com/react@18/umd/react.development.js"
+    ></script>
+    <script
+      crossorigin
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+    ></script>
+    <script src="./APP.js"></script>
+  </body>
+</html>
