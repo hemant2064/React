@@ -1,0 +1,33 @@
+{
+  "name": "react",
+  "version": "1.0.0",
+  "description": "this is react day one",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hemant2064/React.git"
+  },
+  "keywords": [
+    "react",
+    "day",
+    "one"
+  ],
+  "author": "hemant",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hemant2064/React/issues"
+  },
+  "homepage": "https://github.com/hemant2064/React#readme",
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
