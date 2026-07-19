@@ -4,8 +4,10 @@ import Body from "./components/Body";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Cart from "./components/Cart";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import CartProvider from "./utils/Cartcontext";
 
 const stylecard = {
   backgroundColor: "#f0f0f0",
@@ -36,6 +38,10 @@ const appRouter = createBrowserRouter([
         element: <Contact />,
       },
       {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
       },
@@ -43,5 +49,15 @@ const appRouter = createBrowserRouter([
     errorElement: <Error />,
   },
 ]);
+// without cart content
+// const root = ReactDOM.createRoot(document.getElementById("root"));
+// root.render(<RouterProvider router={appRouter} />);
+
+// with cart content
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<RouterProvider router={appRouter} />);
+
+root.render(
+  <CartProvider>
+    <RouterProvider router={appRouter} />
+  </CartProvider>,
+);

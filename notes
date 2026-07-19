@@ -1,1 +1,38 @@
-HTML - 
+map
+- transform a data
+
+variable.map()=>()
+variable.map(item,index)=>(<h1>item.name</h1><h2>item.id</h2>);
+
+condtion
+
+item.profession === "chemistry"
+item.age >= 18 {major}
+item.mark >=35 {pass}
+
+if (age>18)
+{major}
+else
+{minor}
+
+age>18 ? "major" : "minor"
+
+&&
+
+students.map(student,i)=>( <h1>student.profession</h1>)
+
+students.filter(student)=> (student.profession=="chemistry"")
+
+
+
+variable - store data
+a=2;
+increment a by 1;
+a=a+1; a=2+1; a=3;
+a+=1; a=a+1; a=2+1; a=3;
+a++; a=3
+
+function printName(){
+    console.log("Hemant");
+}
+
