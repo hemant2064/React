@@ -1,0 +1,122 @@
+import { MENULIST_URL } from "../utils/constants";
+import { useContext } from "react";
+import { addItem } from "../utils/CartSlice";
+import { useDispatch } from "react-redux";
+// import { CartContext } from "../utils/Cartcontext";
+const MenuItemList = ({ items }) => {
+  // const { cart, addToCart, removeFromCart } = useContext(CartContext);
+  console.log(items[1].card.info);
+  const dispatch = useDispatch();
+  const handleAddItem = () => {
+    dispatch(addItem(food));
+  };
+
+  // const getQuantity = (id) => {
+  //   const item = cart.find((food) => food.id === id);
+  //   return item ? item.quantity : 0;
+  // };
+
+  return (
+    <div className="mt-4">
+      <ul>
+        {items.map((food) => (
+          <li
+            key={food.card.info.id}
+            className="flex justify-between items-start border-b border-gray-200 py-6"
+          >
+            {/* Left Section */}
+            <div className="w-8/12">
+              <h2 className="text-lg font-semibold text-gray-800">
+                {food.card.info.name}
+              </h2>
+
+              <h3 className="mt-1 font-semibold text-gray-700">
+                ₹ {(food.card.info.price || food.card.info.defaultPrice) / 100}
+              </h3>
+
+              <p className="mt-2 text-sm text-gray-500 line-clamp-3">
+                {food.card.info.description}
+              </p>
+            </div>
+
+            {/* Right Section */}
+            <div className="relative w-40">
+              <img
+                className="w-40 h-32 rounded-xl object-cover shadow-md"
+                src={MENULIST_URL + food.card.info.imageId}
+                alt={food.card.info.name}
+              />
+
+              {/* Add Button */}
+              {/* {getQuantity(food.card.info.id) === 0 ? ( */}
+              <button
+                className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white text-green-600 font-bold px-8 py-2 rounded-lg shadow-lg border border-gray-300 hover:bg-gray-100"
+                // onClick={() => addToCart(food.card.info)}
+                onClick={() => handleAddItem(food)}
+              >
+                ADD
+              </button>
+              {/* ) : ( */}
+              {/* <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-4 bg-white border rounded-lg px-4 py-2 shadow-lg">
+                  <button
+                    className="text-red-500 text-xl font-bold"
+                    onClick={() => removeFromCart(food.card.info.id)}
+                  >
+                    −
+                  </button>
+
+                  <span className="font-bold">
+                    {getQuantity(food.card.info.id)}
+                  </span>
+
+                  <button
+                    className="text-green-600 text-xl font-bold"
+                    onClick={() => addToCart(food.card.info)}
+                  >
+                    +
+                  </button>
+                </div> */}
+              {/* )} */}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+    // <div className="mt-4">
+    //   <ul>
+    //     {items.map((food) => (
+    //       <li
+    //         key={food.card.info.id}
+    //         className="flex justify-between items-start border-b border-gray-200 py-6"
+    //       >
+    //         {food.card.info.name}{" "}
+    //         {getQuantity(food.card.info.id) === 0 ? (
+    //           <button className="" onClick={() => addToCart(food.card.info)}>
+    //             Add
+    //           </button>
+    //         ) : (
+    //           <div className="flex items-center gap-2">
+    //             <button onClick={() => removeFromCart(food.card.info.id)}>
+    //               -
+    //             </button>
+
+    //             <span>{getQuantity(food.card.info.id)}</span>
+
+    //             <button onClick={() => addToCart(food.card.info)}>+</button>
+    //           </div>
+    //         )}
+    //         <img
+    //           className="w-32 h-32 rounded-lg object-cover"
+    //           src={MENULIST_URL + food.card.info.imageId}
+    //           alt={food.card.info.name}
+    //         />
+    //         <div>
+    //           <h3>₹ {food.card.info.price / 100}</h3>
+    //         </div>
+    //       </li>
+    //     ))}
+    //   </ul>
+    // </div>
+  );
+};
+export default MenuItemList;

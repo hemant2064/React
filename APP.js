@@ -7,17 +7,20 @@ import Contact from "./components/Contact";
 import Cart from "./components/Cart";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
-import CartProvider from "./utils/Cartcontext";
+import CartProvider from "./utils/CartContext";
+import { Provider } from "react-redux";
 
 const stylecard = {
   backgroundColor: "#f0f0f0",
 };
 const Applayout = () => {
   return (
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    // <Provider store={appStore}>
+      <div className="app">
+        <Header />
+        <Outlet />
+      </div>
+    // {/* </Provider> */}
   );
 };
 const appRouter = createBrowserRouter([
