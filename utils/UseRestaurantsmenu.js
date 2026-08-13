@@ -17,41 +17,47 @@
 // export default UesRestaurantsMenu;
 
 import { useEffect, useState } from "react";
-import { MENU_API } from "./constants";
 
-const useRestaurantsMenu = (resId) => {
-  const [menu, setMenu] = useState();
+const UseRestaurantsMenu = (resId) => {
+  const [resInfo, setResInfo] = useState(null);
 
   useEffect(() => {
     if (!resId) return;
 
-    const fetchData = async () => {
+    const getRestaurantInfo = async () => {
       try {
-        const response = await fetch(MENU_API + resId);
+        const response = await fetch(
+          `https://react-hgk5.onrender.com/restaurants/${resId}`
+        );
 
         if (!response.ok) {
-          throw new Error("Failed to fetch restaurant menu");
+          throw new Error(
+            `HTTP error: ${response.status}`
+          );
         }
 
         const json = await response.json();
 
-        console.log("Restaurant API response:", json);
+        console.log(
+          "FULL MENU API RESPONSE:",
+          json
+        );
 
-        const cards = json?.data?.cards || [];
-
-        console.log("Restaurant menu cards:", cards);
-
-        setMenu(cards);
+        setResInfo(json);
       } catch (error) {
-        console.error("Menu API error:", error);
-        setMenu([]);
+        console.error(
+          "Menu API error:",
+          error
+        );
+
+        setResInfo(null);
       }
     };
 
-    fetchData();
+    getRestaurantInfo();
   }, [resId]);
 
-  return menu;
+  return resInfo;
 };
 
-export default useRestaurantsMenu;
+export default UseRestaurantsMenu;

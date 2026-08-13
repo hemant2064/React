@@ -68,7 +68,7 @@
 import { Link } from "react-router-dom";
 import Restcard from "./Restcard";
 import Shimmer from "./Shimmer";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const Body = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -84,7 +84,9 @@ const Body = () => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const response = await fetch("http://localhost:3001/restaurants");
+      const response = await fetch(
+        "https://react-hgk5.onrender.com/restaurants",
+      );
 
       if (!response.ok) throw new Error("Failed to fetch restaurants");
 
@@ -94,7 +96,7 @@ const Body = () => {
         json?.data?.cards?.filter(
           (item) =>
             item?.card?.card?.["@type"] ===
-            "type.googleapis.com/swiggy.presentation.food.v2.Restaurant"
+            "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
         ) || [];
 
       setRestaurants(restaurantList);
@@ -125,7 +127,7 @@ const Body = () => {
           name.toLowerCase().includes(search) ||
           cuisines.toLowerCase().includes(search)
         );
-      })
+      }),
     );
   };
 
@@ -133,8 +135,8 @@ const Body = () => {
     setFilteredRestaurants(
       restaurants.filter(
         (restaurant) =>
-          Number(restaurant?.card?.card?.info?.avgRating || 0) > 4.5
-      )
+          Number(restaurant?.card?.card?.info?.avgRating || 0) > 4.5,
+      ),
     );
   };
 

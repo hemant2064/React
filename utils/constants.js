@@ -19,4 +19,4 @@ export const MENU_URL =
 export const MENULIST_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/";
 
-export const MENU_API = "http://localhost:3001/restaurants/";
+export const MENU_API =  "https://react-hgk5.onrender.com/restaurants";
