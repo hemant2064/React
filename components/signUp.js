@@ -19,7 +19,7 @@ const Signup = () => {
 
     try {
       const response = await fetch(
-        "http://localhost:3002/auth/signup",
+        "https://foodrush-58f10.web.app/auth/signup",
         {
           method: "POST",
           headers: {
