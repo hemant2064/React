@@ -29,10 +29,12 @@
     "tailwindcss": "^4.3.3"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.12.0",
     "@tailwindcss/vite": "^4.3.3",
     "firebase": "^12.17.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
+    "react-redux": "^9.3.0",
     "react-router-dom": "^6.28.0"
   },
   "browserslist": [
