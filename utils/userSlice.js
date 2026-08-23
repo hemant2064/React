@@ -12,9 +12,11 @@ const initialState = {
 
 const userSlice = createSlice({
   name: "user",
+
   initialState,
 
   reducers: {
+    // LOGIN
     login: (state, action) => {
       state.user = action.payload.user;
       state.token = action.payload.token;
@@ -26,15 +28,19 @@ const userSlice = createSlice({
         JSON.stringify(action.payload.user)
       );
 
-      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem(
+        "token",
+        action.payload.token
+      );
     },
 
+    // LOGOUT
     logout: (state) => {
       state.user = null;
       state.token = null;
       state.isAuthenticated = false;
 
-      // Remove saved login data
+      // Remove login data
       localStorage.removeItem("user");
       localStorage.removeItem("token");
     },

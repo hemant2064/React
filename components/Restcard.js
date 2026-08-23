@@ -1,37 +1,4 @@
-// import { CDN_URL } from "../utils/constants";
 
-// const stylecard = {
-//   backgroundColor: "#f0f0f0",
-// };
-// const Restcard = (props) => {
-//   const { resData } = props;
-
-//   return (
-//     <div className="w-80 justify-items-center-safe border rounded shadow-lg m-1" style={stylecard}>
-//       <img
-//         className="w-70 h-90 p-4 "
-//         alt=" res-log"
-//         src={CDN_URL + resData.card.card.info.cloudinaryImageId}
-//       ></img>
-//       <h3 className="hotel">{resData.card.card.info.name}</h3>
-//       <h4 className="text-gray-500 text-sm line-clamp-3 w-30 ">
-//         {resData.card.card.info.cuisines.join(", ")}
-//       </h4>
-//       <h4 className="rating">{resData.card.card.info.avgRating}</h4>
-//     </div>
-//   );
-// };
-// export const withPromotedCard = () => {
-//   return () => {
-//     return (
-//       <div>
-//         <label>Promoted</label>
-//         <Restcard {...props} />
-//       </div>
-//     );
-//   };
-// };
-// export default Restcard;
 import { CDN_URL } from "../utils/constants";
 
 const Restcard = ({ resData }) => {

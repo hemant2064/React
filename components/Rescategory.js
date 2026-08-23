@@ -1,25 +1,4 @@
-// import MenuItemList from "./MenuItemList.js";
 
-// const Rescategory = ({ data, showItems, setShowIndex }) => {
-//   return (
-//     <div className="border p-3 my-3 rounded-lg shadow-md">
-//       <div
-//         className="flex justify-between cursor-pointer"
-//         onClick={setShowIndex}
-//       >
-//         <h2 className="font-bold">
-//           {data.title} ({data.itemCards.length})
-//         </h2>
-
-//         <span>{showItems ? "⬆️" : "⬇️"}</span>
-//       </div>
-
-//       {showItems && <MenuItemList items={data.itemCards} />}
-//     </div>
-//   );
-// };
-
-// export default Rescategory;
 import MenuItemList from "./MenuItemList";
 
 const Rescategory = ({
