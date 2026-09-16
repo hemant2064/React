@@ -160,7 +160,7 @@
 //     </CartProvider>
 //   </Provider>,
 // );
- 
+
 import ReactDOM from "react-dom/client";
 
 import Header from "./components/Header";
@@ -186,7 +186,6 @@ import {
   Outlet,
 } from "react-router-dom";
 
-
 const AppLayout = () => {
   return (
     <div className="app">
@@ -195,7 +194,6 @@ const AppLayout = () => {
     </div>
   );
 };
-
 
 const appRouter = createBrowserRouter([
   {
@@ -208,9 +206,9 @@ const appRouter = createBrowserRouter([
       {
         index: true,
         element: (
-          <ProtectedRoute>
-            <Body />
-          </ProtectedRoute>
+          
+          <Body />
+          
         ),
       },
 
@@ -218,9 +216,9 @@ const appRouter = createBrowserRouter([
       {
         path: "about",
         element: (
-          <ProtectedRoute>
+         
             <About />
-          </ProtectedRoute>
+          
         ),
       },
 
@@ -228,9 +226,9 @@ const appRouter = createBrowserRouter([
       {
         path: "contact",
         element: (
-          <ProtectedRoute>
+          
             <Contact />
-          </ProtectedRoute>
+          
         ),
       },
 
@@ -238,9 +236,9 @@ const appRouter = createBrowserRouter([
       {
         path: "cart",
         element: (
-          <ProtectedRoute>
+          
             <Cart />
-          </ProtectedRoute>
+          
         ),
       },
 
@@ -248,9 +246,9 @@ const appRouter = createBrowserRouter([
       {
         path: "restaurants/:resId",
         element: (
-          <ProtectedRoute>
+          
             <RestaurantMenu />
-          </ProtectedRoute>
+          
         ),
       },
     ],
@@ -269,16 +267,12 @@ const appRouter = createBrowserRouter([
   },
 ]);
 
-
-const root = ReactDOM.createRoot(
-  document.getElementById("root")
-);
-
+const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <Provider store={appStore}>
     <CartProvider>
       <RouterProvider router={appRouter} />
     </CartProvider>
-  </Provider>
+  </Provider>,
 );

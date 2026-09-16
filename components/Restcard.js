@@ -3,7 +3,7 @@ import { CDN_URL } from "../utils/constants";
 
 const Restcard = ({ resData }) => {
   const info = resData?.card?.card?.info;
-
+console.log(resData)
   if (!info) return null;
 
   return (

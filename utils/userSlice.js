@@ -23,15 +23,9 @@ const userSlice = createSlice({
       state.isAuthenticated = true;
 
       // Save login data
-      localStorage.setItem(
-        "user",
-        JSON.stringify(action.payload.user)
-      );
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
 
-      localStorage.setItem(
-        "token",
-        action.payload.token
-      );
+      localStorage.setItem("token", action.payload.token);
     },
 
     // LOGOUT

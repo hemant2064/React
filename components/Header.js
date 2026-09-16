@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { LOGO_URL } from "../utils/constants";
 import { CartContext } from "../utils/CartContext";
-import { logout } from "../utils/userSlice";
+import { logout } from "../utils/userSlice"; 
 
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false);

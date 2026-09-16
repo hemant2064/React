@@ -10,15 +10,15 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-
   const handleSignup = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    setError("");
-    setLoading(true);
+  setError("");
+  setLoading(true);
 
-    try {
-      const response = await fetch(AUTH_SIGNUP_API, {
+  try {
+    const response = await fetch(AUTH_SIGNUP_API,
+      {
         method: "POST",
 
         headers: {
@@ -30,25 +30,73 @@ const Signup = () => {
           email,
           password,
         }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || "Signup failed");
       }
+    );
 
-      console.log("Signup successful:", data);
+    const data = await response.json();
 
-      navigate("/login");
-    } catch (error) {
-      console.error("Signup error:", error);
-
-      setError(error.message || "Something went wrong. Please try again.");
-    } finally {
-      setLoading(false);
+    if (!response.ok) {
+      throw new Error(
+        data.message || "Signup failed"
+      );
     }
-  };
+
+    console.log("Signup successful:", data);
+
+    navigate("/login");
+
+  } catch (error) {
+    console.error("Signup error:", error);
+
+    setError(
+      error.message ||
+        "Something went wrong. Please try again."
+    );
+
+  } finally {
+    setLoading(false);
+  }
+};
+
+  // const handleSignup = async (e) => {
+  //   e.preventDefault();
+
+  //   setError("");
+  //   setLoading(true);
+
+  //   try {
+  //     // const response = await fetch(AUTH_SIGNUP_API, {
+  //     fetch("http://localhost:3002/auth/signup", {
+  //       method: "POST",
+
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+
+  //       body: JSON.stringify({
+  //         name,
+  //         email,
+  //         password,
+  //       }),
+  //     });
+
+  //     const data = await response.json();
+
+  //     if (!response.ok) {
+  //       throw new Error(data.message || "Signup failed");
+  //     }
+
+  //     console.log("Signup successful:", data);
+
+  //     navigate("/login");
+  //   } catch (error) {
+  //     console.error("Signup error:", error);
+
+  //     setError(error.message || "Something went wrong. Please try again.");
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   return (
     <div className="min-h-[calc(100vh-80px)] bg-gray-50 px-4 py-10">

@@ -15,15 +15,15 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
   const handleLogin = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    setError("");
-    setLoading(true);
+  setError("");
+  setLoading(true);
 
-    try {
-      const response = await fetch(AUTH_LOGIN_API, {
+  try {
+    const response = await fetch(AUTH_LOGIN_API,
+      {
         method: "POST",
 
         headers: {
@@ -34,35 +34,40 @@ const Login = () => {
           email,
           password,
         }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || "Login failed");
       }
+    );
 
-      console.log("Login successful:", data);
+    const data = await response.json();
 
-      // Save user and token in Redux + localStorage
-      dispatch(
-        login({
-          user: data.user,
-          token: data.token,
-        }),
+    console.log("Login response:", data);
+
+    if (!response.ok) {
+      throw new Error(
+        data.message || "Login failed"
       );
-
-      // Go to FoodRush home
-      navigate("/", { replace: true });
-    } catch (error) {
-      console.error("Login error:", error);
-
-      setError(error.message || "Unable to login. Please try again.");
-    } finally {
-      setLoading(false);
     }
-  };
 
+    dispatch(
+      login({
+        user: data.user,
+        token: data.token,
+      })
+    );
+
+    navigate("/", { replace: true });
+
+  } catch (error) {
+    console.log("Login failed:", error.message);
+
+    setError(
+      error.message ||
+        "Unable to login. Please try again."
+    );
+
+  } finally {
+    setLoading(false);
+  }
+};
   return (
     <div className="min-h-screen bg-gray-50 px-4 py-10">
       <div className="mx-auto flex max-w-6xl items-center justify-center">
