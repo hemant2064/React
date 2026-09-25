@@ -162,8 +162,38 @@ app.get("/", (req, res) => {
 // RESTAURANTS
 // =========================
 
+// 
 app.get("/restaurants", (req, res) => {
-  res.json(cberesapi);
+  try {
+    const restaurants =
+      cberesapi?.data?.cards
+        ?.filter(
+          (item) =>
+            item?.card?.card?.["@type"] ===
+            "type.googleapis.com/swiggy.presentation.food.v2.Restaurant"
+        )
+        ?.map((item) => {
+          const info = item.card.card.info;
+
+          return {
+            id: info.id,
+            name: info.name,
+            cloudinaryImageId: info.cloudinaryImageId,
+            cuisines: info.cuisines || [],
+            avgRating: info.avgRating || 0,
+            costForTwo: info.costForTwo || "",
+            areaName: info.areaName || "",
+            locality: info.locality || "",
+          };
+        }) || [];
+
+    res.json(restaurants);
+  } catch (error) {
+    console.error("Restaurant API error:", error);
+    res.status(500).json({
+      message: "Failed to load restaurants",
+    });
+  }
 });
 
 
