@@ -203,12 +203,27 @@ app.get("/restaurants", (req, res) => {
 // RESTAURANT MENU
 // =========================
 
-app.get("/restaurants/405679", (req, res) => {
-  res.json(reid405679);
-});
+// app.get("/restaurants/405679", (req, res) => {
+//   res.json(reid405679);
+// });
 
-app.get("/restaurants/1002539", (req, res) => {
-  res.json(reid1002539);
+// app.get("/restaurants/1002539", (req, res) => {
+//   res.json(reid1002539);
+// });
+app.get("/restaurants/:id", (req, res) => {
+  const { id } = req.params;
+
+  if (id === "405679") {
+    return res.json(reid405679);
+  }
+
+  if (id === "1002539") {
+    return res.json(reid1002539);
+  }
+
+  return res.status(404).json({
+    message: "Menu not found for this restaurant",
+  });
 });
 
 
